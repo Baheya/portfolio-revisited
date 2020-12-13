@@ -8,8 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "framer-motion": "^2.9.5",
     "next": "10.0.3",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "styled-components": "^5.2.1",
+    "styled-components-modifiers": "^1.2.5"
   }
 }
