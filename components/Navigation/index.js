@@ -18,8 +18,8 @@ const HamburgerButton = styled.button`
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 3rem;
+  left: 2rem;
   z-index: 2;
 `;
 
