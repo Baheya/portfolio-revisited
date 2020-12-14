@@ -11,14 +11,15 @@ const NavWrapper = styled(motion.nav)`
   top: 0;
   left: 0;
   text-align: center;
+  z-index: 1;
 `;
 
 const HamburgerButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: 3rem;
+  position: fixed;
+  top: 2rem;
   left: 2rem;
   z-index: 2;
 `;
