@@ -21,7 +21,7 @@ const NavListStyled = styled(motion.ul)`
   font-size: 48px;
 `;
 
-const NavList = () => {
+const NavItems = () => {
   return (
     <NavListStyled variants={variants}>
       {navItems.map((item, i) => (
@@ -31,4 +31,4 @@ const NavList = () => {
   );
 };
 
-export { NavList };
+export { NavItems };
