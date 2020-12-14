@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { motion, useCycle } from 'framer-motion';
-import { NavList } from './NavList';
+import { NavItems } from './NavItems';
 import { Hamburger } from './Hamburger';
-import { useState } from 'react';
 
 const NavWrapper = styled(motion.nav)`
   width: 100%;
@@ -11,7 +10,7 @@ const NavWrapper = styled(motion.nav)`
   top: 0;
   left: 0;
   text-align: center;
-  z-index: 1;
+  z-index: 6;
 `;
 
 const HamburgerButton = styled.button`
@@ -21,10 +20,10 @@ const HamburgerButton = styled.button`
   position: fixed;
   top: 2rem;
   left: 2rem;
-  z-index: 2;
+  z-index: 7;
 `;
 
-const Thing = styled(motion.div)`
+const NavBackground = styled(motion.div)`
   background-color: #6b5c7b;
   position: absolute;
   width: 100%;
@@ -59,8 +58,8 @@ const Navigation = () => {
         <Hamburger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
       </HamburgerButton>
       <NavWrapper animate={isOpen ? 'open' : 'closed'} initial="closed">
-        <Thing variants={variants} />
-        <NavList />
+        <NavBackground variants={variants} />
+        <NavItems />
       </NavWrapper>
     </>
   );
