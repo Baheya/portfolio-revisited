@@ -16,7 +16,7 @@ const variants = {
 
 const NavListStyled = styled(motion.ul)`
   padding: 0;
-  position: absolute;
+  position: fixed;
   transform: translate3d(50%, 50%, 0);
   font-size: 48px;
 `;
