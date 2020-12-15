@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import styled from 'styled-components';
-import { Navigation } from '../components';
-import { useEffect, useState } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { Navigation, Toggle } from '../components';
+import { useEffect, useState, useContext } from 'react';
 import Typed from 'typed.js';
 import { CollageOne } from '../components/Collage/CollageOne';
 import { changeBgColor, strings } from '../utils';
@@ -10,11 +10,11 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 2rem 1fr 1fr 1fr 1fr 2rem;
   grid-template-rows: 200px 300px 300px 300px 300px;
-  background-color: ${(props) => props.bgColor};
+  /* background-color: var(--computed-background); */
 `;
 
 const AboutText = styled.h1`
-  color: #355c7d;
+  color: var(--color-text-primary);
   margin: 0;
   font-size: 96px;
   max-width: 900px;
@@ -22,12 +22,61 @@ const AboutText = styled.h1`
   grid-row: 2 / 3;
 `;
 
-export default function Home() {
-  const [bgColor, setBgColor] = useState(`rgb(192, 196, 220)`);
+const Home = (props) => {
+  const [bgColor, setBgColor] = useState('var(--color-primary-background)');
+  const [darkTheme, setDarkTheme] = useState(undefined);
+  const { changeThemeVariant, getCSSVarValue, theme } = useContext(
+    ThemeContext
+  );
+
+  const handleToggle = (event) => {
+    setDarkTheme(() => !darkTheme);
+    console.log(getCSSVarValue('--color-primary-background'));
+  };
+
+  const storeUserSetPreference = (pref) => {
+    localStorage.setItem('theme', pref);
+  };
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const initialColorValue = root.style.getPropertyValue(
+      '--initial-color-mode'
+    );
+    setDarkTheme(initialColorValue === 'dark');
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (darkTheme !== undefined) {
+      if (darkTheme) {
+        root.setAttribute('data-theme', 'dark');
+        storeUserSetPreference('dark');
+      } else {
+        root.removeAttribute('data-theme');
+        storeUserSetPreference('light');
+      }
+    }
+  }, [darkTheme]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--color-computed-background',
+      getCSSVarValue('--color-primary-background')
+    );
+  }, [darkTheme]);
+
   useEffect(() => {
     document.addEventListener('scroll', () => {
-      const Bg = changeBgColor([192, 196, 220], [248, 177, 149]);
-      setBgColor(`rgb(${Bg.join(',') + ')'}`);
+      const Bg = changeBgColor(
+        getCSSVarValue('--color-primary-background'),
+        getCSSVarValue('--color-secondary-background')
+      );
+      // setBgColor(`rgb(${Bg.join(',') + ')'}`);
+      document.documentElement.style.setProperty(
+        '--color-computed-background',
+        `rgb(${Bg.join(',') + ')'}`
+      );
     });
   }, []);
 
@@ -40,7 +89,8 @@ export default function Home() {
   }, [strings]);
 
   return (
-    <Grid bgColor={bgColor}>
+    <Grid bgColor={getCSSVarValue('--computed-background')}>
+      <Toggle handleToggle={() => handleToggle()} darkTheme={darkTheme} />
       <Navigation />
       <AboutText>
         Hi! My name is Baheya Khalifa and I'm <span id="about"></span>
@@ -48,4 +98,6 @@ export default function Home() {
       <CollageOne />
     </Grid>
   );
-}
+};
+
+export default Home;
