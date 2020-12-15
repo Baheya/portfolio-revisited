@@ -67,7 +67,6 @@ export const ParallaxBox = ({
   const yRange = [0, transformFinalValue];
 
   const y = useTransform(scrollY, yRange, [0, -yOffset], easing);
-  console.log(y);
 
   const opacityInitialValue = fadeOut ? 0 : 1;
   const opacityRange = useMemo(() => [opacityInitialValue, 1], [
