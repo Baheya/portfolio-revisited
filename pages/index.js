@@ -8,7 +8,7 @@ import { changeBgColor, strings } from '../utils';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 2rem 1fr 1fr 1fr 1fr 2rem;
+  grid-template-columns: 2rem repeat(8, 1fr) 2rem;
   grid-template-rows: 200px 300px 300px 300px 300px;
   /* background-color: var(--computed-background); */
 `;
@@ -18,12 +18,11 @@ const AboutText = styled.h1`
   margin: 0;
   font-size: 96px;
   max-width: 900px;
-  grid-column: 2 / 5;
+  grid-column: 2 / 8;
   grid-row: 2 / 3;
 `;
 
-const Home = (props) => {
-  const [bgColor, setBgColor] = useState('var(--color-primary-background)');
+const Home = () => {
   const [darkTheme, setDarkTheme] = useState(undefined);
   const { changeThemeVariant, getCSSVarValue, theme } = useContext(
     ThemeContext
@@ -31,7 +30,6 @@ const Home = (props) => {
 
   const handleToggle = (event) => {
     setDarkTheme(() => !darkTheme);
-    console.log(getCSSVarValue('--color-primary-background'));
   };
 
   const storeUserSetPreference = (pref) => {
@@ -72,7 +70,6 @@ const Home = (props) => {
         getCSSVarValue('--color-primary-background'),
         getCSSVarValue('--color-secondary-background')
       );
-      // setBgColor(`rgb(${Bg.join(',') + ')'}`);
       document.documentElement.style.setProperty(
         '--color-computed-background',
         `rgb(${Bg.join(',') + ')'}`
