@@ -10,7 +10,9 @@ const NavWrapper = styled(motion.nav)`
   top: 0;
   left: 0;
   text-align: center;
-  z-index: 6;
+  z-index: ${(props) => (props.isOpen ? 6 : 1)};
+  display: flex;
+  justify-content: center;
 `;
 
 const HamburgerButton = styled.button`
@@ -24,7 +26,7 @@ const HamburgerButton = styled.button`
 `;
 
 const NavBackground = styled(motion.div)`
-  background-color: #6b5c7b;
+  background-color: var(--color-computed-background);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -57,7 +59,11 @@ const Navigation = () => {
       <HamburgerButton>
         <Hamburger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
       </HamburgerButton>
-      <NavWrapper animate={isOpen ? 'open' : 'closed'} initial="closed">
+      <NavWrapper
+        animate={isOpen ? 'open' : 'closed'}
+        isOpen={isOpen}
+        initial="closed"
+      >
         <NavBackground variants={variants} />
         <NavItems />
       </NavWrapper>
