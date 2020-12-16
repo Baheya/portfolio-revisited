@@ -17,15 +17,14 @@ const variants = {
 const NavListStyled = styled(motion.ul)`
   padding: 0;
   position: fixed;
-  transform: translate3d(50%, 50%, 0);
-  font-size: 48px;
+  font-size: 70px;
 `;
 
 const NavItems = () => {
   return (
     <NavListStyled variants={variants}>
       {navItems.map((item, i) => (
-        <NavItem key={i} item={item} color={colors[i]} />
+        <NavItem key={i} item={item} />
       ))}
     </NavListStyled>
   );
