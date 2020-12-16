@@ -11,8 +11,8 @@ const ToggleWrapper = styled(motion.div)`
   display: flex;
   justify-content: ${(props) => (!props.darkTheme ? `flex-start` : `flex-end`)};
   cursor: pointer;
-  z-index: 8;
-  grid-column: 4 / 5;
+  z-index: 2;
+  grid-column: 9 / 10;
   margin: 1rem;
   position: relative;
 `;
@@ -22,7 +22,7 @@ const Handle = styled(motion.div)`
   border-radius: 20px;
   width: 40px;
   height: 40px;
-  z-index: 9;
+  z-index: 2;
   margin: 5px;
 `;
 
