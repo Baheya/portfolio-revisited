@@ -23,7 +23,7 @@ const NavItemStyled = styled(motion.li)`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: ${(props) => props.color};
+  color: var(--color-text-primary);
 `;
 
 const NavItem = ({ item, color }) => {
@@ -33,7 +33,7 @@ const NavItem = ({ item, color }) => {
       whileHover={{ scale: 1.1 }}
       color={color}
     >
-      {item}
+      <h1>{item}</h1>
     </NavItemStyled>
   );
 };
