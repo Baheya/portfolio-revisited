@@ -6,7 +6,7 @@ const CollageWrapper = styled.div`
   height: 300px;
   position: relative;
   display: flex;
-  grid-column: 5 / 6;
+  grid-column: 8 / 10;
   grid-row: 2 / 3;
 `;
 
