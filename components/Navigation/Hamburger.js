@@ -31,7 +31,7 @@ const Hamburger = ({ isOpen = false, ...props }) => {
     },
   };
   const lineProps = {
-    stroke: '#355C7D',
+    stroke: 'var(--color-text-primary)',
     strokeWidth: 4,
     vectorEffect: 'non-scaling-stroke',
     initial: 'closed',
