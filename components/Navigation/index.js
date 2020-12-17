@@ -1,28 +1,16 @@
 import styled from 'styled-components';
-import { motion, useCycle } from 'framer-motion';
+import { motion, useCycle, AnimatePresence } from 'framer-motion';
 import { NavItems } from './NavItems';
-import { Hamburger } from './Hamburger';
 
 const NavWrapper = styled(motion.nav)`
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  z-index: ${(props) => (props.isOpen ? 6 : 1)};
+  z-index: 6;
   display: flex;
   justify-content: center;
-`;
-
-const HamburgerButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
-  z-index: 7;
+  align-items: center;
+  grid-row: 1 / -1;
 `;
 
 const NavBackground = styled(motion.div)`
@@ -52,21 +40,21 @@ const variants = {
   }),
 };
 
-const Navigation = () => {
-  const [isOpen, setOpen] = useCycle(false, true);
+const Navigation = ({ isOpen, setOpen, toggleNav }) => {
   return (
     <>
-      <HamburgerButton>
-        <Hamburger isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
-      </HamburgerButton>
-      <NavWrapper
-        animate={isOpen ? 'open' : 'closed'}
-        isOpen={isOpen}
-        initial="closed"
-      >
-        <NavBackground variants={variants} />
-        <NavItems />
-      </NavWrapper>
+      <AnimatePresence>
+        {isOpen && (
+          <NavWrapper
+            animate={isOpen ? 'open' : 'closed'}
+            initial="closed"
+            exit="closed"
+          >
+            <NavBackground variants={variants} />
+            <NavItems toggleNav={toggleNav} />
+          </NavWrapper>
+        )}
+      </AnimatePresence>
     </>
   );
 };
