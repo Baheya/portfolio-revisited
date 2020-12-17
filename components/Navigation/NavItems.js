@@ -18,13 +18,14 @@ const NavListStyled = styled(motion.ul)`
   padding: 0;
   position: fixed;
   font-size: 70px;
+  z-index: 7;
 `;
 
-const NavItems = () => {
+const NavItems = ({ isOpen, toggleNav }) => {
   return (
     <NavListStyled variants={variants}>
       {navItems.map((item, i) => (
-        <NavItem key={i} item={item} />
+        <NavItem key={i} item={item} toggleNav={toggleNav} />
       ))}
     </NavListStyled>
   );
