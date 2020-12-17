@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const variants = {
   open: {
@@ -24,16 +25,18 @@ const NavItemStyled = styled(motion.li)`
   align-items: center;
   cursor: pointer;
   color: var(--color-text-primary);
+  z-index: 8;
 `;
 
-const NavItem = ({ item, color }) => {
+const NavItem = ({ item, color, toggleNav }) => {
   return (
     <NavItemStyled
       variants={variants}
       whileHover={{ scale: 1.1 }}
       color={color}
+      onClick={() => toggleNav()}
     >
-      <h1>{item}</h1>
+      <Link href={`/#${item}`}>{item}</Link>
     </NavItemStyled>
   );
 };
