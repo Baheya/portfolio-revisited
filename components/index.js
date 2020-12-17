@@ -1,3 +1,4 @@
-export * from './Navigation/Hamburger';
+export * from './Collage/CollageOne';
+export * from './Header';
 export * from './Navigation';
-export * from './Toggle';
+export * from './Sections/Home';
