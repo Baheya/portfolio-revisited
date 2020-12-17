@@ -10,7 +10,7 @@ const convertRGBtoArray = (color1, color2) => {
 const changeBgColor = (color1, color2) => {
   const convertedColors = convertRGBtoArray(color1, color2);
   let tStart = 100; // Start transition 100px from top
-  let tEnd = 700; // End at 500px
+  let tEnd = 3000; // End at 500px
   let cStart = convertedColors[0]; // Gold
   let cEnd = convertedColors[1]; // Lime
   let cDiff = [cEnd[0] - cStart[0], cEnd[1] - cStart[1], cEnd[2] - cStart[2]];
