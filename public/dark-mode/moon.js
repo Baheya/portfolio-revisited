@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const MoonSVG = styled(motion.svg)`
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   color: var(--color-primary-background);
   position: absolute;
-  right: 12px;
-  top: 10px;
+  right: 6px;
+  top: 5px;
 `;
 
 const variants = {
