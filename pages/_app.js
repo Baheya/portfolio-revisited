@@ -23,7 +23,9 @@ const GlobalStyles = createGlobalStyle`
 		margin: 0;
     padding: 0;
     background-color: var(--color-computed-background);
+    scroll-behavior: smooth;
 	}
+
 
 	h1,
 	h2,
@@ -31,6 +33,11 @@ const GlobalStyles = createGlobalStyle`
 	h4 {
 		margin: 0;
 	}
+h1:target { 
+  margin-top: -12px; 
+  padding-top: 60px; 
+ 
+}
 	a {
 		text-decoration: none;
 		color: inherit;
