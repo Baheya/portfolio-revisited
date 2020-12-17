@@ -1,18 +1,20 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { ParallaxBox } from '../ParallaxBox';
+import { IntersectionObserver } from '../IntersectionObserver';
 
-const CollageWrapper = styled.div`
+const CollageWrapper = styled(motion.div)`
   width: 300px;
   height: 300px;
   position: relative;
   display: flex;
-  grid-column: 8 / 10;
+  grid-column: 2 / 3;
   grid-row: 2 / 3;
 `;
 
 const CollageOne = () => {
   return (
-    <CollageWrapper>
+    <CollageWrapper animate={{ y: [-300, 0], opacity: [0.5, 1], duration: 1 }}>
       <ParallaxBox
         img="/collage1/layer1desktop.png"
         zIndex={1}
