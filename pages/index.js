@@ -1,33 +1,27 @@
 import Head from 'next/head';
 import styled, { ThemeContext } from 'styled-components';
-import { Navigation, Toggle } from '../components';
+import { Navigation, Header, HomeSection } from '../components';
 import { useEffect, useState, useContext } from 'react';
 import Typed from 'typed.js';
-import { CollageOne } from '../components/Collage/CollageOne';
 import { changeBgColor, strings } from '../utils';
+import { useCycle } from 'framer-motion';
+import { Projects } from '../components/Sections/Projects';
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 2rem repeat(8, 1fr) 2rem;
-  grid-template-rows: 200px 300px 300px 300px 300px;
-  /* background-color: var(--computed-background); */
+  grid-template-rows: 3rem repeat(5, 100vh);
+  overflow-x: hidden;
 `;
 
-const AboutText = styled.h1`
-  color: var(--color-text-primary);
-  margin: 0;
-  font-size: 96px;
-  max-width: 900px;
-  grid-column: 2 / 8;
-  grid-row: 2 / 3;
-`;
-
-const Home = () => {
+const Index = () => {
   const [darkTheme, setDarkTheme] = useState(undefined);
+  const [isOpen, setOpen] = useCycle(false, true);
   const { changeThemeVariant, getCSSVarValue, theme } = useContext(
     ThemeContext
   );
 
+  const toggleNav = () => setOpen(!isOpen);
   const handleToggle = (event) => {
     setDarkTheme(() => !darkTheme);
   };
@@ -87,14 +81,17 @@ const Home = () => {
 
   return (
     <Grid bgColor={getCSSVarValue('--computed-background')}>
-      <Toggle handleToggle={() => handleToggle()} darkTheme={darkTheme} />
-      <Navigation />
-      <AboutText>
-        Hi! My name is Baheya Khalifa and I'm <span id="about"></span>
-      </AboutText>
-      <CollageOne />
+      <Header
+        isOpen={isOpen}
+        setOpen={setOpen}
+        handleToggle={handleToggle}
+        darkTheme={darkTheme}
+      />
+      <Navigation toggleNav={toggleNav} isOpen={isOpen} />
+      <HomeSection />
+      <Projects />
     </Grid>
   );
 };
 
-export default Home;
+export default Index;
