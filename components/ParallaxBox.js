@@ -1,6 +1,7 @@
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import { useViewportScroll, useTransform, motion } from 'framer-motion';
 import styled from 'styled-components';
+import { IntersectionContext } from './IntersectionObserver';
 
 const StyledMotionDiv = styled(motion.div)`
   width: 300px;
@@ -31,6 +32,7 @@ export const ParallaxBox = ({
   left,
   bottom,
   zIndex,
+  initialValue,
   ...rest
 }) => {
   const { scrollY } = useViewportScroll();
@@ -38,6 +40,8 @@ export const ParallaxBox = ({
   const [elementTop, setElementTop] = useState(0);
   const [elementBottom, setElementBottom] = useState(0);
   const [clientHeight, setClientHeight] = useState(0);
+
+  const { inView } = useContext(IntersectionContext);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -47,8 +51,9 @@ export const ParallaxBox = ({
       setElementBottom(ref.current.offsetTop + ref.current.offsetHeight);
       setClientHeight(window.innerHeight);
     };
-
-    setValues();
+    if (inView) {
+      setValues();
+    }
     document.addEventListener('load', setValues);
     window.addEventListener('resize', setValues);
 
@@ -56,15 +61,17 @@ export const ParallaxBox = ({
       document.removeEventListener('load', setValues);
       window.removeEventListener('resize', setValues);
     };
-  }, [ref, yOffset]);
+  }, [ref, yOffset, inView]);
 
   // const transformInitialValue =
   //   elementTop - window.innerHeight <= 0 ? 0 : elementTop - window.innerHeight;
-  const transformInitialValue = elementTop - clientHeight * triggerPoint;
+  const transformInitialValue = initialValue
+    ? elementTop - yOffset * triggerPoint
+    : 0;
 
   const transformFinalValue = elementTop + yOffset * triggerPoint;
 
-  const yRange = [0, transformFinalValue];
+  const yRange = [transformInitialValue, transformFinalValue];
 
   const y = useTransform(scrollY, yRange, [0, -yOffset], easing);
 
@@ -93,7 +100,6 @@ export const ParallaxBox = ({
       left={left}
       bottom={bottom}
       zIndex={zIndex}
-      shift={y.current}
       {...rest}
     >
       {children}
