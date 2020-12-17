@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const SunSVG = styled(motion.svg)`
-  width: 35px;
-  height: 35px;
+  width: 17.5px;
+  height: 17.5px;
   color: var(--color-primary-background);
   position: absolute;
-  left: 10px;
-  top: 7px;
+  left: 5px;
+  top: 3.5px;
 `;
 
 const variants = {
