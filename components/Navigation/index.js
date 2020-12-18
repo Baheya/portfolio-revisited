@@ -4,13 +4,13 @@ import { NavItems } from './NavItems';
 
 const NavWrapper = styled(motion.nav)`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   z-index: 6;
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-row: 1 / -1;
+  grid-row: 1 / 6;
 `;
 
 const NavBackground = styled(motion.div)`
@@ -18,6 +18,8 @@ const NavBackground = styled(motion.div)`
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 6;
+  grid-row: 1 / 6;
 `;
 
 const variants = {
