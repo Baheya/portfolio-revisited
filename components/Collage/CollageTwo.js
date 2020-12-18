@@ -18,13 +18,15 @@ const CollageTwo = () => {
         img="/collage-2/layer-1.png"
         zIndex={1}
         triggerPoint={0.5}
-        yOffset={900}
+        yOffset={2200}
+        top="900px"
         initialValue
       />
       <ParallaxBox
         img="/collage-2/layer-2.png"
         yOffset={1200}
         zIndex={2}
+        top="550px"
         triggerPoint={0.9}
         initialValue
       />
