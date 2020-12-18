@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
 
 	html,
 	body {
-		font-family: "'Abril Fatface', cursive";
+		font-family: "'Montserrat', sans-serif";
 		margin: 0;
     padding: 0;
     background-color: var(--color-computed-background);
@@ -32,6 +32,8 @@ const GlobalStyles = createGlobalStyle`
 	h3,
 	h4 {
 		margin: 0;
+    font-family: "'Montserrat', sans-serif";
+    font-weight: 900;
 	}
 h1:target { 
   margin-top: -12px; 
