@@ -46,6 +46,8 @@ const Hamburger = ({ isOpen = false, ...props }) => {
       overflow="visible"
       width="24px"
       height="24px"
+      style={{ originX: '12px', originY: '8px' }}
+      whileHover={isOpen ? { rotate: -90, transition: { duration: 0.2 } } : {}}
       {...props}
     >
       <motion.line x1="0" x2="6" y1="0" y2="0" variants={top} {...lineProps} />
