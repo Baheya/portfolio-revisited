@@ -1,17 +1,23 @@
 import Head from 'next/head';
 import styled, { ThemeContext } from 'styled-components';
-import { Navigation, Header, HomeSection } from '../components';
+import {
+  Navigation,
+  Header,
+  HomeSection,
+  Projects,
+  Contact,
+} from '../components';
 import { useEffect, useState, useContext } from 'react';
 import Typed from 'typed.js';
 import { changeBgColor, strings } from '../utils';
 import { useCycle } from 'framer-motion';
-import { Projects } from '../components/Sections/Projects';
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 2rem repeat(8, 1fr) 2rem;
   grid-template-rows: 3rem repeat(5, 100vh);
   overflow-x: hidden;
+  scroll-snap-type: y mandatory;
 `;
 
 const Index = () => {
@@ -90,6 +96,7 @@ const Index = () => {
       <Navigation toggleNav={toggleNav} isOpen={isOpen} />
       <HomeSection />
       <Projects />
+      <Contact />
     </Grid>
   );
 };
