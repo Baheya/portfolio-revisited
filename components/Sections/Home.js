@@ -7,12 +7,13 @@ const HomeGrid = styled.section`
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: repeat(4, 25vh);
+  scroll-snap-align: start;
 `;
 
 const HomeText = styled.h1`
   color: var(--color-text-primary);
   margin: 0;
-  font-size: 96px;
+  font-size: 84px;
   max-width: 900px;
   grid-column: 1 / 2;
   grid-row: 2 / 4;
