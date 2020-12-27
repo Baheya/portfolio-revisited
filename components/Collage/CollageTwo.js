@@ -26,7 +26,7 @@ const CollageTwo = () => {
         img="/collage-2/layer-2.png"
         yOffset={1200}
         zIndex={2}
-        top="550px"
+        top="600px"
         triggerPoint={0.9}
         initialValue
       />
