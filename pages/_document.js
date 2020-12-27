@@ -69,7 +69,8 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@600;900&display=swap"
+            rel="stylesheet"
             rel="stylesheet"
           />
           <link
