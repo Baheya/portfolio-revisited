@@ -1,4 +1,4 @@
 export * from './Collage/CollageOne';
 export * from './Header';
 export * from './Navigation';
-export * from './Sections/Home';
+export * from './Sections';
